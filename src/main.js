@@ -4,5 +4,8 @@ var clock = require("./clock")
 // 45
 // 0
 
-let clocksReport = await Promise.resolve(clock(users));
+// let clocksReport = await Promise.resolve(clock(users));
 
+
+var clocksReport = new clock()
+clocksReport.initialize();

@@ -12,8 +12,12 @@ class Clock {
         this.tracker = {};
         this.ballOrder = [];
         this.restart = false;
+        console.log(this.inputArr);
     }
-
+    // Store all of the node CLI arguments in an array
+    get inputArr (){
+        return process.argv;
+    }
     checkInput(x) {
         // if 0 end program 
 
@@ -22,6 +26,7 @@ class Clock {
             return typeof i === "integer";
         });
     }
+
 
     rotateBalls() {
        
