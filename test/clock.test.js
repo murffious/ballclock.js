@@ -19,12 +19,12 @@ let ballClock = new Clock();
 // Valid numbers are in the range 27 to 127. A zero signifies the end of input.
 describe('Ball Clock', () => {
     context('Validate Input', () => {
-        it('should fail if any items in input are not all valid integers', () => {
+        it('should fail if any items in input are not all valid numbers', () => {
             let inputList = [];
 
             let actual = ballClock.checkInput(inputList);
 
-            assert.isOk(actual, 'Input items should all be integers');
+            assert.isOk(actual, 'Input items should all be numbers');
         })
         it('should fail if any items in input are not in the range 27 to 127', () => {
             let inputList = [];

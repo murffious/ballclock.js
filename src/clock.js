@@ -1,8 +1,10 @@
 
 const queue = require('./Queue');
-const indicator = require('./indicator')
-// keeps track of the passing minutes by moving ball-bearings
+const indicator = require('./indicator');
 
+let timerIndication = new indicator();
+// keeps track of the passing minutes by moving ball-bearings
+// try catch 
 class Clock {
     constructor() {
         this.initialize();
@@ -12,19 +14,28 @@ class Clock {
         this.tracker = {};
         this.ballOrder = [];
         this.restart = false;
-        console.log(this.inputArr);
+        this.input = [];
+        this.goodToGo = this.checkInput(this.input);
+        console.log(this.goodToGo)
+
     }
     // Store all of the node CLI arguments in an array
     get inputArr (){
-        return process.argv;
+        process.argv.shift();// strip off first 2 
+        process.argv.shift();
+        process.argv.forEach(input => {
+            parseInt(input);
+         })
+        return this.input = process.argv;
     }
     checkInput(x) {
+        // likley must be whole numbers no decimals or floats 
         // if 0 end program 
-
-        // process .arg v to handle input 
+      // handle erros log to user must enter digits 
         return x.every(function (i) {
-            return typeof i === "integer";
+            return typeof i === "number";
         });
+
     }
 
 
