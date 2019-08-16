@@ -10,38 +10,30 @@ class Clock {
     this.initialize();
   }
 
-  initialize() {
+  async initialize() {
     // this.tracker = {};
     // this.ballOrder = [];
     // this.restart = false;
     this.input = [];
-    this.goodToGo = this.checkInput(this.input);
+  
     this.report = []; // array of strings to display to user at end, one at a time 
-    console.log(this.goodToGo);
-    try{
-      if (this.goodToGo){
-        this.hanldeEachClock();
-      } 
-      else {
-        throw "Something is wrong! Try agian.";
-      }
-        
-    }
-    catch(e){
-      console.log(e);
-    }
-       
-       
+   
+    
+    await this.inputArr();
+    await this.hanldeEachClock(this.input);
 
   }
   // Store all of the node CLI arguments in an array
-  get inputArr (){
+  async inputArr (){
     process.argv.shift();// strip off first 2 
     process.argv.shift();
-    process.argv.forEach(input => {
-      parseInt(input);
+    const result = process.argv.map(function (x) { 
+      // force type to numbers to then check 
+      return parseInt(x, 10); 
     });
-    return this.input = process.argv;
+    this.input = result;
+    console.log(this.input);
+    return this.checkInput(this.input);
   }
   checkInput(x) {
     // likley must be whole numbers no decimals or floats 
@@ -77,7 +69,7 @@ class Clock {
   }
 
   // main function after init and checks
-  getCycleInDays (){
+  getCycleInDays (succession){
     
     console.log("here:", succession);
     // return   console.log or txt file if desired -  30 balls cycle after 15 days.
