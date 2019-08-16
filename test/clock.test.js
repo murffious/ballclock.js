@@ -18,23 +18,23 @@ let ballClock = new Clock();
 
 // Valid numbers are in the range 27 to 127. A zero signifies the end of input.
 describe('Ball Clock', () => {
-    context('Validate Input', () => {
-        it('should fail if any items in input are not all valid numbers', () => {
-            let inputList = [];
+  context('Validate Input', () => {
+    it('should fail if any items in input are not all valid numbers', () => {
+      let inputList = [];
+ 
+      let actual = ballClock.checkInput(inputList);
 
-            let actual = ballClock.checkInput(inputList);
+      assert.isOk(actual, 'Input items should all be numbers');
+    });
+    it('should fail if any items in input are not in the range 27 to 127', () => {
+      let inputList = [];
 
-            assert.isOk(actual, 'Input items should all be numbers');
-        })
-        it('should fail if any items in input are not in the range 27 to 127', () => {
-            let inputList = [];
+      let actual = ballClock.checkInput(inputList);
 
-            let actual = ballClock.checkInput(inputList);
-
-            assert.isOk(actual, 'Numbers should all be in the range 27 to 127');
-        })
-    })
-})
+      assert.isOk(actual, 'Numbers should all be in the range 27 to 127');
+    });
+  });
+});
 
 // 2 balls in the minute indicator, 6 balls in the five-minute 
 // indicator and 5 balls in the hour indicator displays the time 5:32.

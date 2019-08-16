@@ -10,7 +10,7 @@ test('can add elements to a queue', () => {
     q.add(1);
   }).not.toThrow();
 });
-
+ 
 test('can remove elements from a queue', () => {
   const q = new Queue();
   expect(() => {
