@@ -36,6 +36,10 @@ describe('Ball Clock', () => {
     })
 })
 
+// 2 balls in the minute indicator, 6 balls in the five-minute 
+// indicator and 5 balls in the hour indicator displays the time 5:32.
+
+
 // Result
 // number of balls given in the input and 
 
